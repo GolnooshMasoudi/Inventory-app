@@ -62,7 +62,8 @@ export default class Storage {
     } else {
       //new
       categoryTosave.id = Date.now(); // similar to:  new Date().getTime()
-      categoryTosave.createdAt = new Date.toISOString();
+      categoryTosave.createdAt = new Date().toISOString();
+
       savedCategories.push(categoryTosave);
     }
     localStorage.setItem("category", JSON.stringify(savedCategories));
@@ -87,8 +88,9 @@ export default class Storage {
       existedItem.category = productTosave.category;
     } else {
       //new
-      productTosave.id = Date.now(); // similar to:  new Date().getTime()
-      productTosave.createdAt = new Date.toISOString();
+      productTosave.id = new Date().getTime();
+      productTosave.createdAt = new Date().toISOString();
+
       savedProducts.push(productTosave);
     }
     localStorage.setItem("products", JSON.stringify(savedProducts));
