@@ -1,14 +1,16 @@
 import Storage from "./Storage.js";
 
 const addNewProductBtn = document.getElementById("add-new-product");
+const searchInput = document.querySelector("#search-input");
 
 class ProductView {
   constructor() {
     addNewProductBtn.addEventListener("click", (e) => {
       e.preventDefault();
       this.addNewProduct(e);
-      this.products = [];
     });
+    searchInput.addEventListener("input", (e) => this.searchProducts(e));
+    this.products = [];
   }
   setAp() {
     this.products = Storage.getAllProducts();
@@ -26,11 +28,11 @@ class ProductView {
       quantity: productQuantity,
     });
     this.products = Storage.getAllProducts();
-    this.createProductsList();
-    console.log(this.products);
+    this.createProductsList(this.products);
+    // console.log(this.products);
   }
 
-  createProductsList() {
+  createProductsList(products) {
     // Request a weekday along with a long date
     const options = {
       weekday: "long",
@@ -39,7 +41,7 @@ class ProductView {
       day: "numeric",
     };
     let result = "";
-    this.products.forEach((item) => {
+    products.forEach((item) => {
       const selectedCategory = Storage.getAllCategories().find(
         (c) => c.id == item.category
       );
@@ -67,6 +69,14 @@ class ProductView {
     });
     const productsDOM = document.getElementById("products-list");
     productsDOM.innerHTML = result;
+  }
+  searchProducts(e) {
+    const value = e.target.value.trim().toLowerCase();
+    const filteredProducts = this.products.filter((p) => {
+      return p.title.toLowerCase().includes(value);
+    });
+
+    this.createProductsList(filteredProducts);
   }
 }
 
