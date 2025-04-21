@@ -69,7 +69,7 @@ export default class Storage {
     localStorage.setItem("category", JSON.stringify(savedCategories));
   }
   static getAllProducts() {
-    const savedProducts = JSON.parse(localStorage.getItem("product")) || [];
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
     //sort => desending
     return savedProducts.sort((a, b) => {
       return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;

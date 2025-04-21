@@ -19,6 +19,7 @@ class CategoryView {
     this.categories = Storage.getAllCategories();
     //update DOM : update select option in category
     this.createCategoriesList();
+    //EMPTY the title and description after click on add new category btn
     categoryDescription.value = "";
     categoryTitle.value = "";
   }
