@@ -13,6 +13,10 @@ class ProductView {
     searchInput.addEventListener("input", (e) => this.searchProducts(e));
 
     selectedSort.addEventListener("change", (e) => this.sortProducts(e));
+    // deleteProductListBtn.addEventListener("click", (e) =>
+    //   this.deleteProductList(e)
+    // );
+
     this.products = [];
   }
   setApp() {
@@ -63,8 +67,8 @@ class ProductView {
               >${item.quantity}</span
             >
             <button
-              class="flex items-center justify-center text-red-200 font-normal border px-3 py-0.5 rounded-xl border-red-400"
-            data-id=${item.id}>
+              class="delete-product flex items-center justify-center text-red-200 font-normal border px-3 py-0.5 rounded-xl border-red-400"
+            data-product-id=${item.id}>
               delete
             </button>
           </div>
@@ -72,6 +76,10 @@ class ProductView {
     });
     const productsDOM = document.getElementById("products-list");
     productsDOM.innerHTML = result;
+    const deletBtns = [...document.querySelectorAll(".delete-product")];
+    deletBtns.forEach((item) => {
+      item.addEventListener("click", (e) => this.deleteProductList(e));
+    });
   }
   searchProducts(e) {
     const value = e.target.value.trim().toLowerCase();
@@ -85,6 +93,14 @@ class ProductView {
     const value = e.target.value;
     // console.log({ value });
     this.products = Storage.getAllProducts(value);
+    this.createProductsList(this.products);
+  }
+  deleteProductList(e) {
+    console.log("Clicked element:", e.target);
+    console.log("Data ID:", e.target.dataset.productId);
+    const productId = e.target.dataset.productId;
+    Storage.deleteProduct(productId);
+    this.products = Storage.getAllProducts();
     this.createProductsList(this.products);
   }
 }

@@ -34,12 +34,6 @@ const categories = [
 ];
 
 export default class Storage {
-  //add new category
-  //save
-  //getAll categories
-  //delete
-  //update to local storage
-
   static getAllCategories() {
     //products , categories ==> local stoarage ==>
     const savedCategories = JSON.parse(localStorage.getItem("category")) || [];
@@ -98,5 +92,13 @@ export default class Storage {
       savedProducts.push(productTosave);
     }
     localStorage.setItem("products", JSON.stringify(savedProducts));
+  }
+  static deleteProduct(id) {
+    //get all the product I have saved until now
+    const savedProducts = Storage.getAllProducts();
+    // 1, 2, 3
+    //2=> want to remove => [1,3]
+    const filteredProducts = savedProducts.filter((p) => p.id !== parseInt(id));
+    localStorage.setItem("products", JSON.stringify(filteredProducts));
   }
 }

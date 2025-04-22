@@ -32,53 +32,62 @@
       <!-- app content --->
       <div class="container max-w-screen-sm mx-auto">
         <!-- category form --->
-        <div class="mb-6">
-          <h2 class="text-xl text-slate-300 font-bold mb-2">
-            Add New Category
-          </h2>
-          <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
-            <div>
-              <label for="category-title" class="block mb-1 text-slate-400"
-                >Category Title</label
-              >
-              <input
-                type="text"
-                name="category-title"
-                id="category-title"
-                class="bg-transparent rounded-lg p-1 border border-slate-500 text-slate-400"
-              />
-            </div>
-            <div>
-              <label
-                for="category-description"
-                class="block mb-1 text-slate-400"
-                >Category Description</label
-              >
-              <textarea
-                class="bg-transparent rounded-lg p-1 border border-slate-500 text-slate-400 w-full"
-                type="text"
-                name="category-description"
-                id="category-description"
-                placeholder=""
-              ></textarea>
-            </div>
-            <div class="flex justify-between items-center gap-x-4">
-              <button
-                class="flex-1 border border-slate-400 text-slate-300 rounded-xl py-2"
-                type="submit"
-              >
-                Cancel
-              </button>
-              <button
-                id="add-new-category"
-                class="flex-1 bg-slate-300 text-slate-700 font-bold rounded-xl py-2"
-                type="submit"
-              >
-                Add New Category
-              </button>
-            </div>
-          </form>
-        </div>
+        <section>
+          <button
+            id="toggle-add-category"
+            class="text-slate-500 text-lg mb-4 font-medium cursor-pointer"
+          >
+            Do you want to add a New Category?
+          </button>
+          <div class="hidden mb-6" id="category-wrapper">
+            <h2 class="text-xl text-slate-300 font-bold mb-2">
+              Add New Category
+            </h2>
+            <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+              <div>
+                <label for="category-title" class="block mb-1 text-slate-400"
+                  >Category Title</label
+                >
+                <input
+                  type="text"
+                  name="category-title"
+                  id="category-title"
+                  class="bg-transparent rounded-lg p-1 border border-slate-500 text-slate-400"
+                />
+              </div>
+              <div>
+                <label
+                  for="category-description"
+                  class="block mb-1 text-slate-400"
+                  >Category Description</label
+                >
+                <textarea
+                  class="bg-transparent rounded-lg p-1 border border-slate-500 text-slate-400 w-full"
+                  type="text"
+                  name="category-description"
+                  id="category-description"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div class="flex justify-between items-center gap-x-4">
+                <button
+                  id="cancel-add-category"
+                  class="flex-1 border border-slate-400 text-slate-300 rounded-xl py-2"
+                  type="submit"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="add-new-category"
+                  class="flex-1 bg-slate-300 text-slate-700 font-bold rounded-xl py-2"
+                  type="submit"
+                >
+                  Add New Category
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
         <!-- product form --->
         <div class="mb-6">
           <h2 class="font-bold text-slate-300 text-xl mb-2">Add New Product</h2>
@@ -171,10 +180,7 @@
             id="sort-products"
             class="bg-transparent text-slate-400 rounded-xl"
           >
-            <option
-              class="bg-slate-500 text-slate-300"
-              value="select-a-category"
-            >
+            <option class="bg-slate-500 text-slate-300" value="">
               select a category
             </option>
             <option class="bg-slate-500 text-slate-300" selected value="newest">
@@ -208,6 +214,6 @@
         </div> -->
       </div>
     </div>
-    <script src="./src/js/main.js " type="module"></script>
+    <script src="./src/js/main.js" type="module"></script>
   </body>
 </html>
