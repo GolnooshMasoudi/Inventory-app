@@ -164,6 +164,27 @@
             class="bg-transparent rounded-xl border-slate-500 text-slate-400"
           />
         </div>
+        <div class="flex item-center justify-between mb-6">
+          <label for="sort-products" class="text-slate-500 text-lg">sort</label>
+          <select
+            name="sort-products"
+            id="sort-products"
+            class="bg-transparent text-slate-400 rounded-xl"
+          >
+            <option
+              class="bg-slate-500 text-slate-300"
+              value="select-a-category"
+            >
+              select a category
+            </option>
+            <option class="bg-slate-500 text-slate-300" selected value="newest">
+              newest
+            </option>
+            <option class="bg-slate-500 text-slate-300" value="oldest">
+              oldest
+            </option>
+          </select>
+        </div>
         <div id="products-list"></div>
         <!-- <div class="flex items-center justify-between align-middle">
           <span class="text-slate-400">React.js</span>
