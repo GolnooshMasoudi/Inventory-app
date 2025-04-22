@@ -3,6 +3,7 @@ import Storage from "./Storage.js";
 const addNewProductBtn = document.getElementById("add-new-product");
 const searchInput = document.querySelector("#search-input");
 const selectedSort = document.querySelector("#sort-products");
+const productCounter = document.querySelector("#product-counter");
 
 class ProductView {
   constructor() {
@@ -21,6 +22,7 @@ class ProductView {
   }
   setApp() {
     this.products = Storage.getAllProducts();
+    this.updateProductCount();
   }
 
   addNewProduct(e) {
@@ -37,6 +39,7 @@ class ProductView {
     this.products = Storage.getAllProducts();
     this.createProductsList(this.products);
     // console.log(this.products);
+    this.updateProductCount();
   }
 
   createProductsList(products) {
@@ -102,6 +105,10 @@ class ProductView {
     Storage.deleteProduct(productId);
     this.products = Storage.getAllProducts();
     this.createProductsList(this.products);
+    this.updateProductCount();
+  }
+  updateProductCount() {
+    productCounter.textContent = this.products.length;
   }
 }
 export default new ProductView();
